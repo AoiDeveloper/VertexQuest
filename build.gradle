@@ -3,6 +3,7 @@ plugins {
     id("checkstyle")
     id("com.gradleup.shadow") version "8.3.6"
     id("xyz.jpenilla.run-paper") version "2.3.1"
+    id 'org.jetbrains.kotlin.jvm'
 }
 
 group = 'com.github.aoideveloper'
@@ -26,6 +27,7 @@ dependencies {
     def jacksonVersion = '2.17.1'
     implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
     implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:${jacksonVersion}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
 tasks {
@@ -46,8 +48,6 @@ checkstyle {
 def targetJavaVersion = 21
 java {
     def javaVersion = JavaVersion.toVersion(targetJavaVersion)
-    sourceCompatibility = javaVersion
-    targetCompatibility = javaVersion
     if (JavaVersion.current() < javaVersion) {
         toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
     }
@@ -76,4 +76,7 @@ processResources {
     filesMatching('plugin.yml') {
         expand props
     }
+}
+kotlin {
+    jvmToolchain(21)
 }
