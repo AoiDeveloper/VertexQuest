@@ -38,7 +38,7 @@ tasks {
 }
 
 checkstyle {
-    toolVersion = '10.17.0'
+    toolVersion = '10.21.2'
     // GoogleのJavaスタイルガイドを適用
     configFile = file('config/checkstyle/google_checks.xml')
 }
