@@ -57,6 +57,7 @@ public class KillEntityNode extends QuestNode {
         killer.sendMessage("討伐した！");
 
         if (currentCount >= requiredAmount) {
+            completeQuest(killer);
             deactivate(killer);
         }
     }

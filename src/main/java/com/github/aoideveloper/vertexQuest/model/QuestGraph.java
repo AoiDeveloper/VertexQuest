@@ -14,24 +14,24 @@ public class QuestGraph {
      * グラフをユニークに識別するためのID.
      * QuestManager中で一意である必要がある.
      */
-    private final String graphId;
+    public final String graphId;
 
     /**
      * このグラフに属するすべてのノードを,ノードIDをキーとして格納します.
      */
-    private final Map<String, QuestNode> nodes;
+    public final Map<String, QuestNode> nodes;
 
     /**
      * あるノードがどのノードに依存しているかを格納します.
      * Key: 子ノードのID
      * Value: その子ノードが依存する、親ノードのIDのリスト
      */
-    private final Map<String, List<String>> dependencies;
+    public final Map<String, List<String>> dependencies;
 
     /**
      * 依存関係を持たない、クエストラインの開始点となるノードのリスト.
      */
-    private final List<QuestNode> rootNodes;
+    public final List<QuestNode> rootNodes;
 
     /**
      * 新しいクエストグラフを構築する.

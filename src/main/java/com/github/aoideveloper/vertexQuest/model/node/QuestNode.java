@@ -1,6 +1,9 @@
 package com.github.aoideveloper.vertexQuest.model.node;
 
 import java.util.Objects;
+
+import com.github.aoideveloper.vertexQuest.event.QuestCompleteEvent;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
@@ -72,6 +75,16 @@ public abstract class QuestNode implements Listener {
      * @param player 対象プレイヤー
      */
     public abstract void onDeactivate(Player player);
+
+    /**
+     * このクエストノードが完了したことを通知します.
+     *
+     * @param player クエストを完了したプレイヤー
+     */
+    public void completeQuest(Player player) {
+        var event = new QuestCompleteEvent(player, this);
+        Bukkit.getPluginManager().callEvent(event);
+    }
 
     @Override
     public boolean equals(Object o) {
